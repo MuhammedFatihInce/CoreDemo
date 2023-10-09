@@ -18,6 +18,15 @@ namespace BusinessLayer.Concrete
 			_blogDal = blogDal;
 		}
 
+		public int BlogCountById(int id)
+		{
+			return _blogDal.BlogCount(x => x.WriterId == id);
+		}
+		public int BlogCount()
+		{
+			return _blogDal.BlogCount();
+		}
+
 		public List<Blog> GetBlogListWithCategory()
 		{
 			return _blogDal.GetListWithCategory();

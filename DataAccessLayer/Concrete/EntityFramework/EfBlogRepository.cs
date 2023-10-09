@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,21 @@ namespace DataAccessLayer.Concrete.EntityFramework
 			using (var c = new Context())
 			{
 				return c.Blogs.Include(x => x.Category).Where(x=>x.WriterId==id).ToList();
+			}
+		}
+		public int BlogCount(Expression<Func<Blog, bool>> filter=null)
+		{
+			using (var c = new Context())
+			{
+				return c.Blogs.Where(filter).Count();
+			}
+		}
+
+		public int BlogCount()
+		{
+			using (var c = new Context())
+			{
+				return c.Blogs.Count();
 			}
 		}
 	}

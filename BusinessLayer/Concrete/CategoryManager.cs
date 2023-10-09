@@ -17,7 +17,11 @@ namespace BusinessLayer.Concrete
 		{
 			_categoryDal = categoryDal;
 		}
-		
+
+		public int CategoryCount()
+		{
+			return _categoryDal.CategoryCount();
+		}
 		public Category TGetById(int id)
 		{
 			return _categoryDal.GetById(id);
